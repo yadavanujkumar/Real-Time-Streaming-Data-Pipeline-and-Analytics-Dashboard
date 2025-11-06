@@ -441,29 +441,6 @@ python spark_streaming/streaming_etl.py --mode console
 streamlit run dashboard/app.py
 ```
 
-## 📝 Best Practices Demonstrated
-
-### Data Engineering
-- ✅ Schema evolution with Parquet
-- ✅ Partitioning for query performance
-- ✅ Idempotent processing with checkpointing
-- ✅ Data quality checks
-- ✅ Efficient compression
-
-### ETL Pipeline
-- ✅ Separation of concerns (producer, processor, consumer)
-- ✅ Configuration management
-- ✅ Error handling and logging
-- ✅ Graceful shutdown
-- ✅ Scalable architecture
-
-### Big Data Technologies
-- ✅ PySpark for distributed processing
-- ✅ Kafka for reliable messaging
-- ✅ Hive for metadata management
-- ✅ Columnar storage (Parquet)
-- ✅ Batch and streaming processing
-
 ## 🔒 Security Considerations
 
 **Local Development**:
@@ -522,27 +499,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
-
-**Yadav Anuj Kumar**
-
-- GitHub: [@yadavanujkumar](https://github.com/yadavanujkumar)
-- Project: Real-Time Streaming Data Pipeline
-
-## 🙏 Acknowledgments
-
-- Apache Spark community
-- Apache Kafka community
-- Streamlit team
-- Open source contributors
-
-## 📚 Additional Resources
-
-- [Architecture Documentation](docs/ARCHITECTURE.md)
-- [AWS Deployment Guide](docs/AWS_DEPLOYMENT.md)
-- [Apache Spark Documentation](https://spark.apache.org/docs/latest/)
-- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
-- [Streamlit Documentation](https://docs.streamlit.io/)
 
 ## 🎯 Learning Outcomes
 
@@ -560,7 +516,3 @@ This project demonstrates proficiency in:
 10. **Software Engineering**: Clean code, documentation, and project organization
 
 ---
-
-**Perfect for**: Data Engineer, Big Data Engineer, ETL Developer, Analytics Engineer roles
-
-**Keywords**: PySpark, Kafka, Real-time Streaming, ETL, Data Pipeline, Big Data, Hive, AWS, Data Engineering, IoT, Analytics Dashboard
