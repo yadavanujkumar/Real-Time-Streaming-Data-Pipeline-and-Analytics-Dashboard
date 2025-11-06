@@ -1,0 +1,117 @@
+# Kafka Configuration for IoT Sensor Data Pipeline
+
+kafka:
+  bootstrap_servers: "localhost:9092"
+  topic: "iot-sensor-data"
+  
+  # Producer configuration
+  producer:
+    acks: "all"
+    retries: 3
+    batch_size: 16384
+    linger_ms: 10
+    buffer_memory: 33554432
+    compression_type: "snappy"
+    max_in_flight_requests_per_connection: 1
+  
+  # Consumer configuration
+  consumer:
+    group_id: "iot-streaming-consumer"
+    auto_offset_reset: "latest"
+    enable_auto_commit: true
+    auto_commit_interval_ms: 1000
+    session_timeout_ms: 30000
+    max_poll_records: 500
+
+# PySpark Configuration
+spark:
+  app_name: "IoT-Sensor-Streaming-ETL"
+  master: "local[*]"
+  
+  # Spark configurations
+  configs:
+    spark.sql.streaming.schemaInference: "true"
+    spark.sql.adaptive.enabled: "true"
+    spark.sql.adaptive.coalescePartitions.enabled: "true"
+    spark.streaming.stopGracefullyOnShutdown: "true"
+    spark.sql.parquet.compression.codec: "snappy"
+    spark.sql.shuffle.partitions: "4"
+    spark.default.parallelism: "4"
+    spark.streaming.kafka.maxRatePerPartition: "100"
+    
+  # Checkpointing
+  checkpoint_location: "/tmp/checkpoint"
+  
+  # Output paths
+  output:
+    raw_data: "/tmp/output/raw_data"
+    aggregated_data: "/tmp/output/aggregated_data"
+
+# Hive Configuration
+hive:
+  warehouse_dir: "/tmp/spark-warehouse"
+  database: "iot_analytics"
+  
+  tables:
+    raw:
+      name: "iot_sensor_raw"
+      location: "/tmp/output/raw_data"
+    aggregated:
+      name: "iot_sensor_aggregated"
+      location: "/tmp/output/aggregated_data"
+
+# Dashboard Configuration
+dashboard:
+  title: "IoT Sensor Analytics Dashboard"
+  data_path: "/tmp/output"
+  refresh_interval: 30  # seconds
+  max_records: 1000
+
+# AWS Configuration (for cloud deployment)
+aws:
+  region: "us-east-1"
+  
+  # S3 configuration
+  s3:
+    bucket: "iot-sensor-data-bucket"
+    raw_data_prefix: "raw/"
+    aggregated_data_prefix: "aggregated/"
+  
+  # EMR configuration
+  emr:
+    cluster_name: "iot-streaming-cluster"
+    instance_type: "m5.xlarge"
+    instance_count: 3
+  
+  # MSK (Managed Kafka) configuration
+  msk:
+    cluster_name: "iot-kafka-cluster"
+    kafka_version: "2.8.1"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  handlers:
+    console: true
+    file: true
+    file_path: "logs/pipeline.log"
+
+# Performance Tuning
+performance:
+  # Kafka tuning
+  kafka_partitions: 3
+  kafka_replication_factor: 1
+  
+  # Spark tuning
+  executor_memory: "2g"
+  executor_cores: 2
+  driver_memory: "1g"
+  
+  # Processing tuning
+  micro_batch_interval: "30 seconds"
+  watermark_delay: "10 minutes"
+  
+  # Aggregation window
+  aggregation_window: "1 minute"
