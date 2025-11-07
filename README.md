@@ -1,9 +1,5 @@
 # Real-Time Streaming Data Pipeline and Analytics Dashboard
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![PySpark](https://img.shields.io/badge/PySpark-3.4.1-orange.svg)](https://spark.apache.org/)
-[![Kafka](https://img.shields.io/badge/Kafka-2.8.1-black.svg)](https://kafka.apache.org/)
 
 A complete end-to-end real-time data engineering project demonstrating streaming data ingestion, processing, storage, and visualization using modern Big Data technologies.
 
